@@ -1,0 +1,18 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col col-sm-10 col-md-8">
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/">Home</a></li>
+        <!--routerlinkOption sirve para que la casilla home no nos salga marcada siempre por defecto, ya que al ser la ruta una /
+        y las demás rutas tambien tienen la barra siempre va a detectar que estas también en el home-->
+        <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/servers">Servers</a></li>
+        <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLink]="['/users']">Users</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row my-4">
+    <div class="col col-sm-10 col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
