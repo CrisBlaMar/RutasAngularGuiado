@@ -12,17 +12,21 @@ import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerResolver } from './servers/server/server-resolver.service';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+
+    {path: 'login', component: LoginComponent},
+
     { path: 'users', component: UsersComponent, children: [
       { path: 'users/:id/:name', component: UserComponent}
     ] },
     
-    { path: 'servers', /**canActivate:[AuthGuard]*/ canActivateChild: [AuthGuard], component: ServersComponent, children: [
+    { path: 'servers', canActivate:[AuthGuard], component: ServersComponent, children: [
       { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] ,
       resolve: { server: ServerResolver} },
-      { path: ':id', component: ServerComponent}
+      { path: ':id', component: ServerComponent, canActivate:[AuthGuard]}
     ] },
     
     { path: 'not-found', component: ErrorPageComponent, data: {message: 'Opps! La página no funciona'}},
