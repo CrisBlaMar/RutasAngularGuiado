@@ -3,10 +3,11 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 
  
-@Injectable()
+@Injectable(
+)
 export class AuthService {
  
-  constructor(private http: HttpClient){}
+  constructor(private httpClient: HttpClient){}
   
   loggedIn = false;
  
@@ -23,15 +24,19 @@ export class AuthService {
 
   private baseUrl: string = environment.baseUrl; 
 
-  login(email:string,password:string){
+  login(email:string, password:string){
     const url = `${this.baseUrl}/auth/login`;
     const body = {
       'email': email,
       'password': password 
     }
-    return this.http.post(url, body);
+    return this.httpClient.post(url, body);
   }
 
 
+  /**Método para obtener el token */
+  obtenerToken(){
+    return JSON.parse(<string>localStorage.getItem("token"));
+  }
 
 }

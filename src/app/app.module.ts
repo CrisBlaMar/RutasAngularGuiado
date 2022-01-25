@@ -19,7 +19,7 @@ import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.s
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerResolver } from './servers/server/server-resolver.service';
 import { LoginComponent } from './login/login.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 
 
 
@@ -39,8 +39,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuard, ServerResolver],
   bootstrap: [AppComponent]

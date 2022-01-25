@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   onlogin() {
     this.router.navigate(['/login'])
   }
+  onservers() {
+    this.router.navigate(['/servers'])
+  }
 
 
 }

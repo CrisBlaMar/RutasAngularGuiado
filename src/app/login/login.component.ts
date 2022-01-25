@@ -15,15 +15,20 @@ export class LoginComponent implements OnInit {
 
 
 
+  /**
+   * Nos suscribimos pasandole el email y la contraseña
+   * al obtener el token lo almacenamos en el localstorage
+   * y nos manda a servers cuando hacemos login y este se
+   * encuentra autenticado con el token
+   */
   login(){
    this.authService.login(this.email,this.password)
     .subscribe( resp => {
-      console.log(resp);
-      localStorage.setItem('jwt',JSON.stringify(resp));
+     // console.log(resp);
+      localStorage.setItem('token',JSON.stringify(resp));
       this.router.navigateByUrl('servers');
     })
   }
-
 
 
   ngOnInit(): void {
